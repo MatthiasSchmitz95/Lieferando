@@ -1,0 +1,425 @@
+body {
+    margin: 0px;
+
+}
+button{
+    background-color: rgba(239, 239, 239, 0.932);
+    color: black;
+    border:2px solid rgba(93, 92, 92, 0.932);;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+}
+input{
+    font-size: 20px;
+    text-align: center;
+
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table tr.topBorder {
+    border-top: 1px solid black;
+}
+
+table tr td.left {
+    text-align: left;
+
+    padding-left: 40px;
+
+}
+
+table tr td.right {
+    text-align: right;
+    width: 216px;
+    padding-right: 40px;
+
+}
+
+h1 {
+    margin: 0px;
+}
+
+h2 {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+
+.header {
+    background-color: orange;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+
+
+}
+
+.headerPic {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    height: 200px;
+}
+
+input.addresssuche {
+    border: none;
+    border-bottom: 3px solid white;
+    height: 30px;
+    background-color: orange;
+    color: white;
+}
+
+.addresssuche:focus {
+    border: none;
+    border-bottom: 3px solid white;
+    outline: none;
+}
+
+.bigContainer {
+    display: flex;
+}
+
+.leftContainer {
+    width: 65%;
+}
+
+.searchMenuBar {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 48px;
+    padding-right: 40px;
+    background-color: rgba(239, 239, 239, 0.932);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+
+}
+
+.searchMenuBar a {
+    text-decoration: none;
+    color: black;
+
+}
+
+.bg1 {
+    display: flex;
+    background-color: rgba(239, 239, 239, 0.932);
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.menuItem {
+
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 2px solid black;
+    height: 200px;
+
+}
+.item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item h3{
+    width:200px;
+}
+
+.basket {
+    position: fixed;
+    width: 35%;
+    right: 0px;
+    height: 100vh;
+    background-color: white;
+    text-align: center;
+    box-shadow: -2px 25px 13px rgba(0, 0, 0, 0.35);
+
+
+}
+.basket h2{
+    box-shadow:rgb(0 0 0 / 5%) 0px 2px 1px 0px ;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.basketList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 40px;
+    margin-right: 40px;
+
+
+
+}
+
+.roundBtn {
+    background-color: rgba(239, 239, 239, 0.932);
+    ;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    padding: 0px;
+    font-size: 20px;
+}
+
+.summ {
+    margin-top: 10px;
+    height: 123px;
+    background-color: rgba(239, 239, 239, 0.932);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    display: flex;
+
+}
+.orderBtn{
+    margin-top: 24px;
+    width:250px;
+    height:60px;
+    background-color: orange;
+    color: white;
+    border-radius: 60px;
+    border: none;
+    font-size: 40px;
+
+
+}
+.noOrderBtn{
+    margin-top: 24px;
+    width:250px;
+    height:60px;
+    background-color:  rgba(239, 239, 239, 0.932);
+    color: white;
+    border-radius: 60px;
+    border: none;
+    font-size: 40px;
+
+}
+.minOrder{
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: rgb(255, 201, 121);
+    text-align: left;
+}
+
+.center{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+@media (max-width:925px){
+    
+.searchMenuBar {
+    height: 50px;
+    display: flex;
+    flex-flow: wrap;
+    padding-left: 48px;
+    padding-right: 40px;
+    background-color: rgba(239, 239, 239, 0.932);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+input{
+    font-size: 20px;
+    text-align: center;
+    width:100px;
+
+}
+input.addresssuche {
+    border: none;
+    border-bottom: 3px solid white;
+    height: 30px;
+    background-color: orange;
+    color: white;
+    width: 200px;
+}
+
+.addresssuche:focus {
+    border: none;
+    border-bottom: 3px solid white;
+    outline: none;
+}
+h3{
+    font-size: 16px;
+}
+
+}
+@media (max-width:740px){
+    .orderBtn{
+        width: 200px;
+    }
+    .noOrderBtn{
+        width:200px;
+    }
+
+    h3{
+        font-size: 14px;
+    }
+
+    table{
+        font-size: 15px;
+    }
+
+}
+@media (max-width:700px){
+    .searchMenuBar{
+        height: 70px;;
+    }
+    .basketList{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .minOrder {
+        padding-left: 5px;
+        padding-right: 5px;
+
+    }
+    table tr td.left{
+        padding-left: 5px;
+    }
+    table tr td.right{
+        padding-right: 5px;
+    }
+
+    .orderBtn{
+        width: 160px;
+        font-size: 30px;
+    }
+    .noOrderBtn{
+        width:160px;
+        font-size: 30px;
+    }
+}
+@media (max-width:400px){
+    
+    .header{
+        justify-content: flex-start;
+    }
+
+    input{
+        font-size: 14px;
+        text-align: center;
+        width:100px;
+    
+    }
+    input.addresssuche {
+        border: none;
+        border-bottom: 3px solid white;
+        height: 30px;
+        background-color: orange;
+        color: white;
+        width: 100px;
+    }
+
+}
+
+@media (max-width:540px){
+
+    .leftContainer h2{
+        text-align: center;
+
+    }
+    .header{
+        padding-left: 17px;
+    }
+
+    .item h3{
+        width:auto;
+    }
+    input{
+        font-size: 14px;
+        text-align: center;
+        width:100px;
+    
+    }
+    input.addresssuche {
+        border: none;
+        border-bottom: 3px solid white;
+        height: 30px;
+        background-color: orange;
+        color: white;
+        width: 120px;
+    }
+    
+    .addresssuche:focus {
+        border: none;
+        border-bottom: 3px solid white;
+        outline: none;
+    }
+    h3{
+        font-size: 16px;
+    }
+}
+
+@media (max-width:474px){
+    .leftContainer{
+        width:50%;
+    }
+
+    .basket{
+        width:50%;
+    }
+
+    .searchMenuBar{
+        padding-bottom: 60px;
+        padding-left: 5px;
+        padding-right: 5px;
+
+    }
+    .bg1 {
+        margin-left: 0px;
+        margin-right: 0px;
+        display: flex;
+        justify-content: center;
+        
+
+    }
+    .bg1 h3{
+        text-align: center;
+        
+    }
+    .menuContainer{
+        margin-left: 0px;
+        margin-right:0px;
+    }
+    .menuItem{
+        margin-left: 2px;
+        margin-right:2px;
+        height: 142px;
+        
+    }
+}
+
+
+

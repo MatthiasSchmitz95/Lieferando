@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lieferando</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="loadMenu(), renderBasket()">
+    <div class="header">
+        <h1><b>Lieferando</b>.de</h1>
+        <input class="addresssuche" type="text">
+        <div>
+            <img class="languageContainer">
+            <a><img class="burgerMenu" src=""></a>
+        </div>
+    </div>
+
+    <div class="bigContainer">
+        <div class="leftContainer">
+            <img class="headerPic" src="img/pizza.jpg">
+            <h2>Croccante Restaurant</h2>
+
+            <div class="searchMenuBar">
+
+                <a href="#">Beliebte Gerichte</a>
+                <a href="#">Salate</a>
+                <a href="#">Pizza</a>
+                <a href="#">Pizzabrot</a>
+                <a href="#">Pasta</a>
+                <a href="#">Al Forno</a>
+                <a href="#">Aufläufe</a>
+                <a href="#">Puten Schnitzel</a>
+
+
+            </div>
+            <div>
+                <div class="bg1">
+                    <h3>Beliebte Gerichte</h3>
+                </div>
+                <div class="menuContainer" id="menuContainer">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="basket">
+            <h2>Warenkorb</h2>
+
+            <div id="basket">
+
+
+            </div>
+
+            <div  id="minOrder">
+
+            </div>
+
+            <div class="summ">
+
+                <table id="summ">
+                    <tr>
+                        <td class="left">Zwischensumme</td>
+                        <td class="right">0€</td>
+                    </tr>
+                    <tr>
+                        <td class="left">Gesamt</td>
+                        <td class="right">0€</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="orderBtn">
+            
+            </div>
+        </div>
+        
+
+
+</body>
+
+</html>
