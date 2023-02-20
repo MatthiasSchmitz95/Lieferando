@@ -148,7 +148,8 @@ input.addresssuche {
 }
 
 .basket {
-    position: fixed;
+    position: sticky;
+    top:0px;
     width: 35%;
     right: 0px;
     height: 100vh;

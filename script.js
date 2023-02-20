@@ -15,7 +15,7 @@ function loadMenu() {
         document.getElementById('menuContainer').innerHTML += `
         <div class="menuItem" id="menuItem${i}">
         <div class="item">
-         <h3>${menuItem[i]}</h3><h3>${prices[i]}€</h3>
+         <h3>${menuItem[i]}</h3><h3>${prices[i].toFixed(2).replace('.',',')}€</h3>
          <button href="#" onclick="addToBasket(${i})">+</button>
          </div>
         
@@ -53,13 +53,13 @@ function renderBasket() {
     }
     else {
         for (let i = 0; i < addedItems.length; i++) {
-            let totalPrice  = (Math.round(amount[i] * addedItemprices[i] * 100) / 100).toFixed(2);
+            let totalPrice  = amount[i] * addedItemprices[i];
             document.getElementById('basket').innerHTML += `
         <div>
         <div class="basketList">
         <h3>${amount[i]}x</h3>
         <h3>${addedItems[i]}</h3>
-        <h3>${totalPrice}€</h3>
+        <h3>${totalPrice.toFixed(2).replace('.',',')}€</h3>
         </div>
         <div class="adding">
             <button class="roundBtn" onclick="remove(${i})">-</button>
@@ -120,23 +120,21 @@ function calculate() {
         for (let i = 0; i < addedItems.length; i++) {
 
             let orderSumm = startSumm +=amount[i] * addedItemprices[i];
-            let orderSummFixed = orderSumm.toFixed(2);
             let totalSumm = orderSumm+fees;
-            let totalSummFixed = totalSumm.toFixed(2);
             document.getElementById('summ').innerHTML = `
             <tr>
                 <td class="left">Zwischensumme</td>
-                <td class="right">${orderSummFixed}€</td>
+                <td class="right">${orderSumm.toFixed(2).replace('.',',')}€</td>
             </tr>
     
             <tr>
                 <td class="left">Liefergebühren</td>
-                <td class="right">${fees}€</td>
+                <td class="right">${fees.toFixed(2).replace('.',',')}€</td>
             </tr>
     
             <tr class="topBorder">
                 <td class="left"><b>Gesamt<b></td>
-                <td class="right"><b>${totalSummFixed}€<b></td>
+                <td class="right"><b>${totalSumm.toFixed(2).replace('.',',')}€<b></td>
             </tr>
            `;
             updateButton(orderSumm);
