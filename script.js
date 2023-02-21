@@ -7,32 +7,22 @@ let amount = [];
 let addedItemprices = [];
 let addedItems = [];
 
+let fees = 2.50;
+
 
 
 function loadMenu() {
     document.getElementById('menuContainer').innerHTML = '';
     for (i = 0; i < menuItem.length; i++) {
-        document.getElementById('menuContainer').innerHTML += `
-        <div class="menuItem" id="menuItem${i}">
-        <div class="item">
-         <h3>${menuItem[i]}</h3><h3>${prices[i].toFixed(2).replace('.',',')}€</h3>
-         <button href="#" onclick="addToBasket(${i})">+</button>
-         </div>
-        
-         <p>${ingredients[i]}</p>
-         
-        
-     </div>
-        `;
+        templateRenderMenuCard(i);
     }
-
 }
 
 
 function addToBasket(i) {
     let position = addedItems.indexOf(menuItem[i]);
     if (position == -1) {
-        
+
         amount.push(1);
         addedItems.push(menuItem[i]);
         addedItemprices.push(prices[i]);
@@ -53,29 +43,15 @@ function renderBasket() {
     }
     else {
         for (let i = 0; i < addedItems.length; i++) {
-            let totalPrice  = amount[i] * addedItemprices[i];
-            document.getElementById('basket').innerHTML += `
-        <div>
-        <div class="basketList">
-        <h3>${amount[i]}x</h3>
-        <h3>${addedItems[i]}</h3>
-        <h3>${totalPrice.toFixed(2).replace('.',',')}€</h3>
-        </div>
-        <div class="adding">
-            <button class="roundBtn" onclick="remove(${i})">-</button>
-            <button class="roundBtn" onclick="add(${i})">+</button>
-        </div>
-    </div>
-</div>
-        `;
+            let totalPrice = amount[i] * addedItemprices[i];
+            templateRenderAdded(totalPrice, i)
             calculate();
         }
     }
 }
 
-function add(i){
-
-    amount[i] +=1;
+function add(i) {
+    amount[i] += 1;
     renderBasket();
     calculate();
 }
@@ -92,51 +68,24 @@ function remove(i) {
         amount[i] -= 1;
         renderBasket();
         calculate();
-
     }
 }
 
-function calculate() {  
-    let fees = 2.50;
-    let startSumm=0;
+function calculate() {
+
+    let startSumm = 0;
     if (addedItems.length == 0) {
         let orderSumm = 0;
         updateButton(orderSumm);
         minimumOrder(orderSumm);
-        document.getElementById('summ').innerHTML = `
-        <tr>
-        <td class="left">Zwischensumme</td>
-        <td class="right">0€</td>
-        </tr>
-        <tr>
-        <td class="left">Gesamt</td>
-        <td class="right">0€</td>
-         </tr>`;
+        templateRenderEmptyBasket();
+
     }
-
-    
-
     else {
         for (let i = 0; i < addedItems.length; i++) {
-
-            let orderSumm = startSumm +=amount[i] * addedItemprices[i];
-            let totalSumm = orderSumm+fees;
-            document.getElementById('summ').innerHTML = `
-            <tr>
-                <td class="left">Zwischensumme</td>
-                <td class="right">${orderSumm.toFixed(2).replace('.',',')}€</td>
-            </tr>
-    
-            <tr>
-                <td class="left">Liefergebühren</td>
-                <td class="right">${fees.toFixed(2).replace('.',',')}€</td>
-            </tr>
-    
-            <tr class="topBorder">
-                <td class="left"><b>Gesamt<b></td>
-                <td class="right"><b>${totalSumm.toFixed(2).replace('.',',')}€<b></td>
-            </tr>
-           `;
+            let orderSumm = startSumm += amount[i] * addedItemprices[i];
+            let totalSumm = orderSumm + fees;
+            templateRenderBasketSumm(orderSumm, totalSumm, fees);
             updateButton(orderSumm);
             minimumOrder(orderSumm);
 
@@ -151,20 +100,18 @@ function updateButton(orderSumm) {
         document.getElementById('orderBtn').innerHTML = `
         <button class="noOrderBtn">Bestellen</button>
         `;
-
     } else {
         document.getElementById('orderBtn').innerHTML = `
         <button class="orderBtn" onclick="location.href='success.html';">Bestellen</button>
         `;
     }
-
 }
+
 function minimumOrder(orderSumm) {
     let minpric1 = 30 - orderSumm;
     let minprice = (Math.round(minpric1 * 100) / 100).toFixed(2);
-    if (addedItems.length==0) {
+    if (addedItems.length == 0) {
         document.getElementById('minOrder').innerHTML = ``;
-        
     }
     else if (minprice > 0) {
         document.getElementById('minOrder').innerHTML = `
@@ -174,7 +121,71 @@ function minimumOrder(orderSumm) {
     else {
         document.getElementById('minOrder').innerHTML = ``;
     }
+}
 
 
+
+function templateRenderMenuCard(i) {
+    document.getElementById('menuContainer').innerHTML += `
+<div class="menuItem" id="menuItem${i}">
+<div class="item">
+ <h3>${menuItem[i]}</h3><h3>${prices[i].toFixed(2).replace('.', ',')}€</h3>
+ <button href="#" onclick="addToBasket(${i})">+</button>
+ </div>
+
+ <p>${ingredients[i]}</p>
+ 
+
+</div>
+`;
+}
+
+function templateRenderEmptyBasket() {
+    document.getElementById('summ').innerHTML = `
+    <tr>
+    <td class="left">Zwischensumme</td>
+    <td class="right">0€</td>
+    </tr>
+    <tr>
+    <td class="left">Gesamt</td>
+    <td class="right">0€</td>
+     </tr>`;
+}
+
+
+function templateRenderAdded(totalPrice, i) {
+    document.getElementById('basket').innerHTML += `
+    <div>
+    <div class="basketList">
+    <h3>${amount[i]}x</h3>
+    <h3>${addedItems[i]}</h3>
+    <h3>${totalPrice.toFixed(2).replace('.', ',')}€</h3>
+    </div>
+    <div class="adding">
+        <button class="roundBtn" onclick="remove(${i})">-</button>
+        <button class="roundBtn" onclick="add(${i})">+</button>
+    </div>
+</div>
+</div>
+    `;
+}
+
+function templateRenderBasketSumm(orderSumm, totalSumm, fees) {
+    document.getElementById('summ').innerHTML = `
+    <tr>
+        <td class="left">Zwischensumme</td>
+        <td class="right">${orderSumm.toFixed(2).replace('.', ',')}€</td>
+    </tr>
+
+    <tr>
+        <td class="left">Liefergebühren</td>
+        <td class="right">${fees.toFixed(2).replace('.', ',')}€</td>
+    </tr>
+
+    <tr class="topBorder">
+        <td class="left"><b>Gesamt<b></td>
+        <td class="right"><b>${totalSumm.toFixed(2).replace('.', ',')}€<b></td>
+    </tr>
+   `;
 }
 
